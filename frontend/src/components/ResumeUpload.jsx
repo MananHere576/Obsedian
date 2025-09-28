@@ -11,7 +11,7 @@ export default function ResumeUpload({ setResumeSnippet }) {
     const form = new FormData();
     form.append("resume", file);
     try {
-      const res = await fetch("http://localhost:4000/api/upload-resume", { method: "POST", body: form });
+      const res = await fetch("https://obsedian-backend.vercel.app/api/upload-resume", { method: "POST", body: form });
       const data = await res.json();
       if (data.ok) {
         setResumeSnippet(data.resumeTextSnippet || "");
