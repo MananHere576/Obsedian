@@ -1,5 +1,5 @@
 
-# Obsedian
+# Obsedian Project
 
 ### Backend
 1. cd backend
