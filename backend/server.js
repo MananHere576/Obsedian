@@ -1,10 +1,4 @@
-/**
- * Minimal Express backend for Resume-driven Voice Assistant
- * - POST /api/upload-resume  -> multipart form with 'resume' file (pdf or txt) or text field 'resumeText'
- * - POST /api/ask           -> JSON { question, history } -> calls Gemini API
- *
- * Config via .env: MODEL_API_KEY, PORT
- */
+
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
@@ -19,9 +13,9 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 
-// Simple in-memory storage of resume text per session (not persistent)
+
 let resumeText = "";
-let chatHistory = []; // store {question, answer, timestamp}
+let chatHistory = []; 
 
 app.post("/api/upload-resume", upload.single("resume"), async (req, res) => {
   try {
@@ -34,7 +28,7 @@ app.post("/api/upload-resume", upload.single("resume"), async (req, res) => {
         const parsed = await pdfParse(data);
         resumeText = parsed.text || "";
       } else {
-        // treat as plain text
+
         const data = fs.readFileSync(filepath, "utf8");
         resumeText = data;
       }
