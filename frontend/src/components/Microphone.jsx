@@ -58,7 +58,7 @@ export default function Microphone({ setChatHistory, chatHistory }) {
     // send to backend
     const localHistory = chatHistory || [];
     try {
-      const res = await fetch("https://obsedian-backend.vercel.app/api/ask", {
+      const res = await fetch("https://obsedian-backend.onrender.com/api/ask", {
         method:"POST",
         headers: { "Content-Type":"application/json" },
         body: JSON.stringify({ question: q, history: localHistory })
